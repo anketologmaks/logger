@@ -26,21 +26,13 @@ class FileHandler extends AbstractHandler
         $paths = pathinfo($this->filename);
         $dirname = $paths['dirname'];
 
-        $descr = null;
+        $this->createDir($dirname);
 
-        if (!is_resource($this->filename)) {
-            $this->createDir($dirname);
-
-            $descr = fopen($this->filename, 'a');
-            chmod($this->filename, 0644);
-
-            if (!is_resource($descr)) {
-                throw new \UnexpectedValueException(sprintf('The stream or file "%s" could not be opened in append mode', $this->filename));
-            }
-        }
+        $descr = fopen($this->filename, 'a');
+        chmod($this->filename, 0644);
 
         if (!is_resource($descr)) {
-            throw new \LogicException('No stream was opened yet');
+            throw new \UnexpectedValueException(sprintf('The stream or file "%s" could not be opened in append mode', $this->filename));
         }
 
         // После каждой записи мы закрываем дескриптор файла для упрощения функционала
