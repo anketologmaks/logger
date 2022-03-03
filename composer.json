@@ -1,0 +1,25 @@
+{
+    "name": "anketolog/logger",
+    "authors": [
+        {
+            "name": "Maksim Fedorov",
+            "email": "anketolog@maksfedorov.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Logger\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\Logger\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "require": {
+        "psr/log": "^3.0"
+    }
+}
